@@ -2,6 +2,7 @@
 const express = require("express");
 const { createHandler } = require("graphql-http/lib/use/express");
 const schema = require("./schema/schema.js");
+const cors = require("cors");
 //Database
 const mongoose = require("mongoose");
 //Made use of a chrome extension instead
@@ -18,6 +19,7 @@ mongoose.connection.once("open", () => {
 //express function
 const app = express();
 
+app.use(cors());
 //initialize express with graphQL package that allow express to read graphQL
 app.use(
   "/graphql",
